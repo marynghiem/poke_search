@@ -20,9 +20,29 @@ export const Pokemon = () => {
       const pokeData = pokemonState.data[pokemonName];
       return (
         <div className={"pokemon-wrapper"}>
-          <div className={"item"}></div>
-          <h1>Sprites</h1>
-          <img src={pokeData.sprites.front_default} alt=""></img>
+          <div className={"item"}>
+            <h1>Sprites</h1>
+            <img src={pokeData.sprites.front_default} alt=""></img>
+            <img src={pokeData.sprites.back_default} alt=""></img>
+            <img src={pokeData.sprites.front_shiny} alt=""></img>
+            <img src={pokeData.sprites.back_shiny} alt=""></img>
+          </div>
+          <div className="item">
+            <h1>Stats</h1>
+            {pokeData.stats.map((el) => {
+              return (
+                <p>
+                  {el.stat.name} {el.base_stat}
+                </p>
+              );
+            })}
+          </div>
+          <div className="item">
+            <h1>Abilities</h1>
+            {pokeData.abilities.map((el) => {
+              return <p>{el.ability.name}</p>;
+            })}
+          </div>
         </div>
       );
     }
@@ -39,9 +59,11 @@ export const Pokemon = () => {
   };
   console.log(5);
   return (
-    <div>
+    <div className="poke">
       <h1>{pokemonName}</h1>
       {ShowData()}
     </div>
   );
 };
+
+export default Pokemon;
