@@ -10,13 +10,11 @@ export const Pokemon = () => {
   const dispatch = useDispatch();
   const pokemonState = useSelector((state) => state.Pokemon);
   React.useEffect(() => {
-    console.log("use efect");
     dispatch(GetPokemon(pokemonName));
   }, []);
 
   const ShowData = () => {
     if (!_.isEmpty(pokemonState.data[pokemonName])) {
-      console.log(1);
       const pokeData = pokemonState.data[pokemonName];
       return (
         <div className={"pokemon-wrapper"}>
@@ -47,17 +45,15 @@ export const Pokemon = () => {
       );
     }
     if (pokemonState.loading) {
-      console.log(2);
       return <p>loading...</p>;
     }
     if (pokemonState.errorMsg !== "") {
-      console.log(3);
       return <p>{pokemonState.errorMsg}</p>;
     }
-    console.log(4);
+
     return <p>error getting pokemon</p>;
   };
-  console.log(5);
+
   return (
     <div className="poke">
       <h1>{pokemonName}</h1>
